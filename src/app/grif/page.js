@@ -74,10 +74,6 @@ const Fretboard = ({ data }) => {
   
 
   const showTabs = async (tabs) => {
-    
-
-
-
     if (true) {
       for (let i = curTab; i < length; i++) {
         
@@ -267,7 +263,7 @@ const Fretboard = ({ data }) => {
                 
                 {
                   digitalNotes.map((item, index) => (
-                    <span> <span className='font-bold'>{item}</span> ({orderedNotes[item]}) - </span>
+                    <span key={index} > <span className='font-bold'>{item}</span> ({orderedNotes[item]}) - </span>
                   ))
                 }  
               </p>

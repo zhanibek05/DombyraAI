@@ -107,7 +107,7 @@ export default function Landing() {
                 <div className="grid gap-4">
                   <div className="flex flex-col items-start space-y-2 rounded-lg bg-muted p-4">
                     <p className="text-muted-foreground">
-                      "Мен домбырада мүлде ойнай алмайтынмын. Бірақ сонда да кейбір әуендерді домбырада қайталап ойнап көрдім. "
+                      Мен домбырада мүлде ойнай алмайтынмын. Бірақ сонда да кейбір әуендерді домбырада қайталап ойнап көрдім. 
                     </p>
                     <div className="flex items-center space-x-2">
                       <img
@@ -125,7 +125,7 @@ export default function Landing() {
                   </div>
                   <div className="flex flex-col items-start space-y-2 rounded-lg bg-muted p-4">
                     <p className="text-muted-foreground">
-                      "Нарықта осыған ұқсас сервис көрмедім. Әрине әлі жақсартатын заттар көп, бірақ бастама жаман емес"
+                      Нарықта осыған ұқсас сервис көрмедім. Әрине әлі жақсартатын заттар көп, бірақ бастама жаман емес
                     </p>
                     <div className="flex items-center space-x-2">
                       <img
