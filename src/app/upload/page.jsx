@@ -9,7 +9,7 @@ export default function Upload() {
 
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
-  const [midiNumbers, setMidiNumbers] = useState([]);
+  const [midiNumbers, setMidiNumbers] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(false);
   const [uploading, setUploading] = useState(false);
 

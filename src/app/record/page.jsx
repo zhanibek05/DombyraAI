@@ -10,7 +10,7 @@ export default function Main() {
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const [isShowTabs, setIsShowTabs] = useState(false);
-  const [tabs, setTabs] = useState({})
+  const [tabs, setTabs] = useState(null)
   const [blob, setBlob] = useState(null)
   const [uploading, setUploading] = useState(false)
 
