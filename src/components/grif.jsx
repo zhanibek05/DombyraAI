@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect} from 'react';
-import styles from '../app/grif/grif.module.css';
-
+import styles from './fretboard/fretboard.module.css'
 
 const Grif = () => {
 
