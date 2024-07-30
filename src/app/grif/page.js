@@ -7,7 +7,7 @@ import * as Tone from 'tone';
 
 
 
-const Fretboard = ({ data }) => {
+export default function Fretboard({ data }) {
   let length = 0;
   
   
@@ -284,7 +284,6 @@ const Fretboard = ({ data }) => {
   );
 };
 
-export default Fretboard;
 
 
 
