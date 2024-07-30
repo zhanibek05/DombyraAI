@@ -1,9 +1,6 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/EwDRAQ4ulGz
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+
 import Link from "next/link"
+import Footer from "./footer"
 
 export default function Landing() {
   return (
@@ -154,27 +151,7 @@ export default function Landing() {
           </div>
         </section>
       </main>
-      
+      <Footer></Footer>
     </div>
-  )
-}
-
-function Music2Icon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="8" cy="18" r="4" />
-      <path d="M12 18V2l7 4" />
-    </svg>
   )
 }

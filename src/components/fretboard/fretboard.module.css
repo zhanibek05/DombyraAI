@@ -1,6 +1,6 @@
 
 
-  .fretboard {
+.fretboard {
     display: flex;
     flex-direction: column;
     background-color: #be975b;

@@ -43,17 +43,17 @@ const Header = () => {
       {/* Mobile navigation */}
       {isMenuOpen && (
         <nav className="md:hidden py-4 px-4 bg-white">
+          <Link href="search" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
+            Іздеу
+          </Link>
           <Link href="record" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
-            Record
+            Жазба
           </Link>
           <Link href="upload" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
-            Upload
+            Жазу
           </Link>
-          <Link href="#" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
-            About
-          </Link>
-          <Link href="#" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
-            Sign in
+          <Link href="about" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
+            Біз жайлы
           </Link>
         </nav>
       )}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AboutPage = () => {
+const About = () => {
   return (
     <div className="min-h-screen  flex items-center justify-center p-4">
       <div className="max-w-3xl bg-white rounded-xl shadow-2xl overflow-hidden">
@@ -26,4 +26,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default About;

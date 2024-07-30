@@ -1,22 +1,10 @@
 "use client"
-
-import React, { useEffect, useState, useRef } from 'react';
-import styles from '../grif/grif.module.css';
-import * as Tone from 'tone';
+import React, { useEffect} from 'react';
+import styles from '../app/grif/grif.module.css';
 
 
+const Grif = () => {
 
-
-const Grif = ({ data }) => {
-  let length = 0;
-  
-  
-  if(data){
-    length = Object.entries(data).length;
-  }
-  
-  
-  
   const numberOfFrets = 20; // число ладов
   const fretMarkPositions = [2, 5, 7, 10, 12, 14]; // позиции маркеров на домбре
   const noteFlat = ["C", 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
@@ -24,40 +12,6 @@ const Grif = ({ data }) => {
   const orderedNotes = ["G4", "Ab4", "A4", "Bb4", "B4", "C5", "Db5", "D5", "Eb5", "E5", "F5", "Gb5", "G5", "Ab5", "A5", "Bb5", "B5", "C6", "Db6", "D6"];
   const accidentals = 'flats';
   const dombyraTuning = [2, 7];
-
-  
-
-  
-
-
-  const synth = new Tone.Synth().toDestination();
-
-  const sampler = new Tone.Sampler({
-    urls:{
-      "G4": "G4.mp3", 
-      "Ab4": "Ab4.mp3", 
-      "A4": "A4.mp3", 
-      "Bb4": "Bb4.mp3",
-      "B4": "B4.mp3",
-      "C5": "C5.mp3", 
-      "Db5": "Db5.mp3", 
-      "D5": "D5.mp3", 
-      "Eb5": "Eb5.mp3", 
-      "E5": "E5.mp3", 
-      "F5": "F5.mp3", 
-      "Gb5": "Gb5.mp3", 
-      "G5": "G5.mp3", 
-      "Ab5": "Ab5.mp3", 
-      "A5": "A5.mp3", 
-      "Bb5": "Bb5.mp3", 
-      "B5": "B5.mp3", 
-      "C6": "C6.mp3", 
-      "Db6": "Db6.mp3", 
-      "D6": "Db6.mp3"
-    },
-    baseUrl:"/notes/"
-  }).toDestination();
-  
 
   const generateNoteNames = (noteIndex, accidentals) => {
     noteIndex = noteIndex % 12;
