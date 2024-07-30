@@ -4,8 +4,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from './grif.module.css';
 import * as Tone from 'tone';
 
+/**
+ * @typedef {[number, number]} NoteData
+ */
 
-
+/**
+ * @param {{ data: NoteData[] }} props
+ */
 
 const Fretboard = ({ data }) => {
   let length = 0;
