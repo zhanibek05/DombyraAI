@@ -43,6 +43,9 @@ const Header = () => {
       {/* Mobile navigation */}
       {isMenuOpen && (
         <nav className="md:hidden py-4 px-4 bg-white">
+          <Link href="main" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
+            Басты
+          </Link>
           <Link href="search" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
             Іздеу
           </Link>

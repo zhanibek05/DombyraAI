@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Fretboard from '../fretboard/fretboard';
 import Grif from '../../components/grif';
 import Footer from '../../components/footer';
+import Link from 'next/link';
 
 interface MidiData {
   data?: Record<string, [number, number] | any> | null;
@@ -14,6 +15,7 @@ export default function Search() {
   const [midiData, setMidiData] = useState<MidiData | any>(null);
   const [uploading, setUploading] = useState<boolean>(false);
   const [uploadStatus, setUploadStatus] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     if(query == ""){
@@ -39,6 +41,7 @@ export default function Search() {
       setUploading(false);
       setUploadStatus(true);
     } catch (error) {
+      setIsError(true)
       console.error(error);
       setUploading(false);
     }
@@ -83,6 +86,12 @@ export default function Search() {
               <p className='text-gray-500'>1-2 минут</p>
               </>
               }
+            {
+              isError &&
+              <div>
+                <p className='text-gray-500'>Өкінішке орай бір жерде қате кетті. Қолжетімді <Link className='text-blue-500 ' href="main">әуендерді</Link> үйренсеңіз болады</p>
+              </div>
+            }
           </div>
           
         </div>

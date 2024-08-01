@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Fretboard from './fretboard/fretboard';  // Make sure to import the Fretboard component
+import Link from 'next/link';
 
 const SongList = () => {
   const [songs, setSongs] = useState([]);
@@ -38,10 +39,10 @@ const SongList = () => {
           
           <input
             type="text"
-            placeholder="Search songs..."
+            placeholder="құстар әні, bella ciao ..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+            className="w-full h-10 p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 shadow-sm"
           />
           
 
@@ -59,6 +60,7 @@ const SongList = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           
             {filteredSongs.map((song, index) => (
+              <>
               <div
                 key={index}
                 className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer"
@@ -69,7 +71,17 @@ const SongList = () => {
                 </div>
                 <div className='bg-gray-100 h-2'></div>
               </div>
+              </>
+              
             ))}
+            
+          </div>
+          <div className='pt-10 flex flex-col items-center'>
+            <Link href='search' >
+              <p className='text-gray-500 hover:text-blue-500'>Керек әуенді таппадыңыз ба? Онда AI көмегімен өзіңіз жасап көріңіз!</p>
+            </Link>
+            
+
           </div>
         </>
       ) : (

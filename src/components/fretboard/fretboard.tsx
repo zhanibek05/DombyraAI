@@ -24,6 +24,16 @@ const Fretboard: React.FC<FretboardProps> = ({data}) => {
   const [octave, setOctave] = useState<number>(0);
   const [instrument, setInstrument] = useState<string>("synth");
   const [digitalNotes, setDigitalNotes] = useState<number[] >([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
+    if(isMobile){
+      alert("Ұялы телефонды бұрыңыз")
+    }
+  }, []);
+
 
   useEffect(() => {
     if (data) {
