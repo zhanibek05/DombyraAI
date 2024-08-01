@@ -14,7 +14,7 @@ const Fretboard: React.FC<FretboardProps> = ({data}) => {
   const fretMarkPositions = [2, 5, 7, 10, 12, 14];
   const noteFlat = ["C", 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
   const noteSharp = ["C", 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-  const orderedNotes = ["G4", "Ab4", "A4", "Bb4", "B4", "C5", "Db5", "D5", "Eb5", "E5", "F5", "Gb5", "G5", "Ab5", "A5", "Bb5", "B5", "C6", "Db6", "D6", "Eb6", "E6", "F6", "Gb6", "G6", "Ab6", "A6", "Bb6", "B6"];
+  const orderedNotes = ["G4", "Ab4", "A4", "Bb4", "B4", "C5", "Db5", "D5", "Eb5", "E5", "F5", "Gb5", "G5", "Ab5", "A5", "Bb5", "B5", "C6", "Db6", "D6"];
   const accidentals = 'flats';
   const dombyraTuning = [2, 7];
 
@@ -97,12 +97,18 @@ const Fretboard: React.FC<FretboardProps> = ({data}) => {
       }
 
       if (instrument === 'dombyra' && sampler) {
-        Tone.loaded().then(() => {
-          sampler.triggerAttackRelease(note, "4n");
-        });
+        if(orderedNotes.includes(note)){
+          Tone.loaded().then(() => {
+            sampler.triggerAttackRelease(note, "4n");
+          });
+        }
+        
       }
-      if (instrument === 'synth' && synth) {
-        synth.triggerAttackRelease(note, "8n");
+      else if (instrument === 'synth' && synth) {
+        if(orderedNotes.includes(note)){
+          synth.triggerAttackRelease(note, "8n");
+        }
+        
       }
 
       await timer(tabs[i][1] * 1000 / playSpeed);
@@ -189,6 +195,7 @@ const Fretboard: React.FC<FretboardProps> = ({data}) => {
 
   return (
     <div  className='pt-10 h-full'>
+     
       <div className='flex items-center justify-between mx-20'>
         <select
           id="octave"

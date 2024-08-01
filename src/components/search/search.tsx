@@ -16,6 +16,10 @@ export default function Search() {
   const [uploadStatus, setUploadStatus] = useState<boolean>(false);
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+    if(query == ""){
+      alert("empty query");
+      return null
+    }
     e.preventDefault();
     setUploading(true);
     try {
@@ -72,8 +76,15 @@ export default function Search() {
                 )}
               </button>
             </form>
+            {
+              uploading && 
+              <>
+              <img src="dombyraLOGO.png" className='w-14 animate-spin' alt="" />
+              <p className='text-gray-500'>1-2 минут</p>
+              </>
+              }
           </div>
-          <Grif />
+          
         </div>
       )}
       {uploadStatus && midiData && (

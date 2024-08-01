@@ -19,12 +19,12 @@ const Header = () => {
         
         {/* Desktop navigation */}
         <nav className="hidden md:flex gap-4 sm:gap-6">
+          <Link href="main" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            Басты
+          </Link>
           <Link href="search" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Іздеу
           </Link> 
-          <Link href="record" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Жазба
-          </Link>
           <Link href="upload" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Жүктеу
           </Link>
@@ -45,9 +45,6 @@ const Header = () => {
         <nav className="md:hidden py-4 px-4 bg-white">
           <Link href="search" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
             Іздеу
-          </Link>
-          <Link href="record" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
-            Жазба
           </Link>
           <Link href="upload" className="block py-2 text-sm font-medium hover:underline underline-offset-4" prefetch={false} onClick={toggleMenu}>
             Жазу

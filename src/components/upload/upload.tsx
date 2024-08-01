@@ -4,6 +4,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import Fretboard from "../fretboard/fretboard";
 import Grif from "../../components/grif";
 import Footer from "../../components/footer";
+import Link from "next/link";
 
 interface MidiData {
   data?: Record<string, [number, number] | any> | null;
@@ -27,7 +28,7 @@ export default function Upload() {
     setUploading(true);
 
     if (!file) {
-      setMessage('Please select a file first');
+      setMessage('Файлды таңдаңыз');
       setUploading(false);
       return;
     }
@@ -60,7 +61,7 @@ export default function Upload() {
 
   return (
     <>
-      <div className="px-4">
+      <div className=" px-4">
         {!uploadStatus && (
           <>
             <div className="flex flex-col items-center gap-6 p-6 md:p-8 lg:p-10">
@@ -90,10 +91,22 @@ export default function Upload() {
                     {uploading ? <div>Күтіңіз...</div> : <div>Жүктеу</div>}
                   </button>
                   {message && <p>{message}</p>}
+                  
                 </form>
+                
               </div>
+              
+              {uploading &&
+                <>
+                <img src="dombyraLOGO.png" className='w-14 animate-spin' alt="" />
+                <p className='text-gray-500'>1-2 минут</p>
+                </>
+              }
+
+              <h1 className="text-l font-bold" >Немесе <Link className="text-blue-500 underline" href="record">таспаға</Link> жаз</h1>
             </div>
-            <Grif />
+          
+            
           </>
         )}
         {uploadStatus && <Fretboard data={midiNumbers} />}

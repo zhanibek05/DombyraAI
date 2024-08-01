@@ -1,49 +1,91 @@
 "use client"
-import Link from "next/link";
-import { useState } from "react"
+import React, { useState, useEffect } from 'react';
+import Fretboard from './fretboard/fretboard';  // Make sure to import the Fretboard component
 
+const SongList = () => {
+  const [songs, setSongs] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSong, setSelectedSong] = useState(null);
+  const [loading, setLoading] = useState(true)
 
+  useEffect(() => {
+    const fetchSongs = async () => {
+      try {
+        const response = await fetch('https://dombyranewserver-production.up.railway.app/songs/');
+        const data = await response.json();
+        setSongs(data);
+        setLoading(false)
+      } catch (error) {
+        console.error('Error fetching songs:', error);
+      }
+    };
 
-export default function Main() {
+    fetchSongs();
+  }, []);
 
-    return (
-      <div className="flex flex-col items-center justify-between min-h-screen p-4 bg-gray-220">
-        <main className="flex flex-col items-center justify-center flex-grow">
-          <h1 className="mb-8 text-2xl font-bold text-center">Play any melody on dombyra</h1>
-          <button className="relative flex items-center justify-center w-64 h-64 border-4 border-gray-900 rounded-full hover:scale-110 transition-transform duration-300">
-            <div className="absolute flex items-center justify-center w-48 h-48 border-4 border-gray-800 rounded-full animate-pulse">
-              <PlayIcon className="w-16 h-16 text-red-500 " />
-            </div>
-          </button>
-          <p className="mt-4 text-red-500 animate-bounce">Record</p>
-          <p>or upload music:</p>
-          <div className="rounded-md flex  justify-center bg-gray-800 text-white w-24">
-            <Link  href="upload" >Upload</Link>
-          </div>
+  const filteredSongs = songs.filter(song =>
+    song.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSongSelect = (song) => {
+    setSelectedSong(song);
+  };
+
+  return (
+    <div className="p-4 bg-gray-100 min-h-screen">
+      {!selectedSong ? (
+        <>
           
-        </main>
-      </div>
-    )
-  }
-  
-  
-  
-  
-  function PlayIcon(props) {
-    return (
-      <svg
-        {...props}
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polygon points="6 3 20 12 6 21 6 3" />
-      </svg>
-    )
-  }
+          <input
+            type="text"
+            placeholder="Search songs..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+          />
+          
+
+          
+          <div className='flex flex-col items-center font-bold text-3xl mb-5'>Танымал әндер</div>
+          {loading && 
+            <>
+            <div className='flex flex-col items-center'>
+              <img src="dombyraLOGO.png" className='w-14 animate-spin ' alt="" />
+            </div>
+           
+            </>
+            
+          }
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          
+            {filteredSongs.map((song, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer"
+                onClick={() => handleSongSelect(song)}
+              >
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 truncate">{song.name}</h3>
+                </div>
+                <div className='bg-gray-100 h-2'></div>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="mt-4">
+          <button
+            onClick={() => setSelectedSong(null)}
+            className="mb-4 text-white bg-black px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors duration-300"
+          >
+            Артқа
+          </button>
+          <div className="flex flex-col items-center text-2xl font-bold mb-2">{selectedSong.name}</div>
+          <Fretboard data={(selectedSong.body)} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default SongList;
