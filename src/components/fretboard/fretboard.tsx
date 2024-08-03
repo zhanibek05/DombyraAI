@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './fretboard.module.css'
 import * as Tone from 'tone';
+import { useTranslations } from 'next-intl';
 
 interface FretboardProps {
   data?: Record<string, [number, number] | any> | null;
@@ -17,6 +18,8 @@ const Fretboard: React.FC<FretboardProps> = ({data}) => {
   const orderedNotes = ["G4", "Ab4", "A4", "Bb4", "B4", "C5", "Db5", "D5", "Eb5", "E5", "F5", "Gb5", "G5", "Ab5", "A5", "Bb5", "B5", "C6", "Db6", "D6"];
   const accidentals = 'flats';
   const dombyraTuning = [2, 7];
+
+  const t = useTranslations("fretboard")
 
   const [playSpeed, setPlaySpeed] = useState<number>(1);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -266,7 +269,7 @@ const Fretboard: React.FC<FretboardProps> = ({data}) => {
             </div>
           </div>
         </div>
-        <h1 className="text-2xl font-bold text-gray-800 mb-4">Сандық ноталар</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">{t("digital_notes")}</h1>
         <div className="flex items-center justify-center p-4">
           <div className="max-w-3xl bg-white rounded-xl shadow-2xl overflow-hidden">
             <div className="p-8">
@@ -276,9 +279,7 @@ const Fretboard: React.FC<FretboardProps> = ({data}) => {
                 ))}
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Барлық сандық ноталар астыңғы ішек үшін.
-                <strong>0</strong> - ашық ішек, <strong>1</strong> - бірінші перне, <strong>2</strong> - екінші перне болып 19 ға дейін кете береді.
-                Жанындағы жақшадағы әріптер ноталары
+               {t('instructions')}
               </p>
             </div>
           </div>

@@ -1,8 +1,10 @@
-
+import {useTranslations} from 'next-intl';
 import Link from "next/link"
 import Footer from "./footer"
 
+
 export default function Landing() {
+  const t = useTranslations('landing');
   return (
     <div className="flex flex-col min-h-[100dvh]">
       
@@ -12,11 +14,13 @@ export default function Landing() {
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
+    
+               
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Ұнаған мелодияны домбырада ойнап көріңіз
+                  {t('headline')}
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Кез келген әуенді AI көмегімен домбыраның сандық ноталарына келтіреміз. 
+                    {t('small_description')} 
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -25,7 +29,7 @@ export default function Landing() {
                     className="inline-flex h-10 items-center justify-center rounded-md bg-black px-8 text-sm font-medium text-white shadow transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
-                    Байқап көру
+                    {t('get_started_button')}
                   </Link>
                 </div>
               </div>
@@ -44,9 +48,9 @@ export default function Landing() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Қалай жұмыс істейді</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t('how_it_work')}</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-md/relaxed ">
-                  *Бұл әзірге бета нұсқасы. Кейбір қиын диапазонды әуендерде қате жұмыс істеуі мүмкін. 
+                  {t('disclamer')} 
                 </p>
               </div>
             </div>
@@ -55,24 +59,24 @@ export default function Landing() {
                 <ul className="grid gap-6">
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Әуен форматын таңдаңыз:</h3>
-                      <p className="text-muted-foreground font-semibold "> <Link className="text-blue-500" href='search'>Іздеп табу</Link>, <Link className="text-blue-500" href="record">Таспаға жазу</Link>, <Link className="text-blue-500" href="upload">Құрылғыдан таңдау</Link> </p>
+                      <h3 className="text-xl font-bold">{t('hiw1')}:</h3>
+                      <p className="text-muted-foreground font-semibold "> <Link className="text-blue-500" href='search'>{t('hiw2')}</Link>, <Link className="text-blue-500" href="record">{t('hiw3')}</Link>, <Link className="text-blue-500" href="upload">{t('hiw5')}</Link> </p>
                       
                     </div>
                   </li>
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Әуенді өңдейміз...</h3>
+                      <h3 className="text-xl font-bold">{t('hiw6')}...</h3>
                       <p className="text-muted-foreground">
-                        Дыбыстан ноталарды аламыз, ноталарды сандық нотаға айналдырамыз
+                      {t('hiw7')}
                       </p>
                     </div>
                   </li>
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Домбырада ойнаңыз</h3>
+                      <h3 className="text-xl font-bold">{t('hiw8')}</h3>
                       <p className="text-muted-foreground">
-                        Экраннан қайталаңыз 
+                      {t('hiw9')} 
                       </p>
                     </div>
                   </li>
@@ -93,9 +97,9 @@ export default function Landing() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Алғашқы пікірлер</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t('reviews')}</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Бета тестілеушілердің алғашқы пікірлері
+                  {t('r1')}
                 </p>
               </div>
             </div>
@@ -104,7 +108,7 @@ export default function Landing() {
                 <div className="grid gap-4">
                   <div className="flex flex-col items-start space-y-2 rounded-lg bg-muted p-4">
                     <p className="text-muted-foreground">
-                      Мен домбырада мүлде ойнай алмайтынмын. Бірақ сонда да кейбір әуендерді домбырада қайталап ойнап көрдім. 
+                      {t('r2')} 
                     </p>
                     <div className="flex items-center space-x-2">
                       <img
@@ -116,13 +120,13 @@ export default function Landing() {
                       />
                       <div>
                         <p className="font-medium">Санжар Аширбеков</p>
-                        <p className="text-xs text-muted-foreground">КБТУ 3 курс студенті</p>
+                        <p className="text-xs text-muted-foreground">Cтудент</p>
                       </div>
                     </div>
                   </div>
                   <div className="flex flex-col items-start space-y-2 rounded-lg bg-muted p-4">
                     <p className="text-muted-foreground">
-                      Нарықта осыған ұқсас сервис көрмедім. Әрине әлі жақсартатын заттар көп, бірақ бастама жаман емес
+                      {t('r3')}
                     </p>
                     <div className="flex items-center space-x-2">
                       <img

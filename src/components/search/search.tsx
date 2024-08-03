@@ -5,6 +5,7 @@ import Fretboard from '../fretboard/fretboard';
 import Grif from '../../components/grif';
 import Footer from '../../components/footer';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface MidiData {
   data?: Record<string, [number, number] | any> | null;
@@ -16,6 +17,8 @@ export default function Search() {
   const [uploading, setUploading] = useState<boolean>(false);
   const [uploadStatus, setUploadStatus] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
+
+  const t = useTranslations('search')
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     if(query == ""){
@@ -53,7 +56,7 @@ export default function Search() {
         <div className="px-4 h-screen">
           <div className="flex flex-col items-center gap-6 p-6 md:p-8 lg:p-10">
             <h1 className="text-4xl font-bold text-center py-8">
-              Әуеннің атын жазыңыз
+              {t("headline")}
             </h1>
             <form onSubmit={handleSearch} className="flex w-full max-w-md items-center">
               <input
@@ -75,7 +78,7 @@ export default function Search() {
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
                 ) : (
-                  <p>Іздеу</p>
+                  <p>{t('find')}</p>
                 )}
               </button>
             </form>
@@ -89,7 +92,7 @@ export default function Search() {
             {
               isError &&
               <div>
-                <p className='text-gray-500'>Өкінішке орай бір жерде қате кетті. Қолжетімді <Link className='text-blue-500 ' href="main">әуендерді</Link> үйренсеңіз болады</p>
+                <p ><Link className='text-blue-500 ' href="main"> {t('error')} </Link></p>
               </div>
             }
           </div>

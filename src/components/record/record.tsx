@@ -3,6 +3,7 @@
 import React, { useState, useRef } from "react";
 import Fretboard from "../fretboard/fretboard";
 import Footer from "../../components/footer";
+import { useTranslations } from "next-intl";
 
 interface MidiData {
   data?: Record<string, [number, number] | any> | null;
@@ -40,6 +41,7 @@ export default function Record() {
   const [tabs, setTabs] = useState<MidiData|any>(null);
   const [blob, setBlob] = useState<Blob | null>(null);
   const [uploading, setUploading] = useState<boolean>(false);
+  const t = useTranslations("record")
 
   const handleButtonClick = () => {
     if (isRecording) {
@@ -118,7 +120,7 @@ export default function Record() {
         <div className="flex flex-col items-center justify-between min-h-screen py-0 bg-gray-220">
           <main className="flex flex-col items-center justify-center flex-grow">
             <h1 className="text-4xl font-bold text-center py-8">
-              Таспаға жазыңыз
+              {t('head')}
             </h1>
             <button
               disabled={uploading}
@@ -129,7 +131,7 @@ export default function Record() {
                 <PlayIcon isRecording={isRecording} className="w-16 h-16 text-red-600" />
               </div>
             </button>
-            {isRecording && <p className="mt-4 text-red-500 animate-bounce">Жазылуда</p>}
+            {isRecording && <p className="mt-4 text-red-500 animate-bounce">{t('rec')}</p>}
             
             {audioURL && (
               <div className="flex flex-col items-center justify-between">
@@ -145,7 +147,7 @@ export default function Record() {
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                   )}
-                  {uploading ? <div>Күтіңіз...</div> : <div>Сандық нота</div>}
+                  {uploading ? <div>{t('wait')}...</div> : <div>{t('note')}</div>}
                 </button>
               </div>
             )}

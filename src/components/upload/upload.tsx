@@ -2,9 +2,8 @@
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import Fretboard from "../fretboard/fretboard";
-import Grif from "../../components/grif";
-import Footer from "../../components/footer";
 import Link from "next/link";
+import {useTranslations} from 'next-intl';
 
 interface MidiData {
   data?: Record<string, [number, number] | any> | null;
@@ -16,6 +15,7 @@ export default function Upload() {
   const [midiNumbers, setMidiNumbers] = useState<MidiData | any>(null);
   const [uploadStatus, setUploadStatus] = useState<boolean>(false);
   const [uploading, setUploading] = useState<boolean>(false);
+  const t = useTranslations('upload')
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -67,7 +67,7 @@ export default function Upload() {
             <div className="flex flex-col items-center gap-6 p-6 md:p-8 lg:p-10">
               <div className="max-w-md w-full px-4">
                 <div className="text-center">
-                  <h1 className="text-4xl font-bold text-center py-8">Керекті әуенді таңда</h1>
+                  <h1 className="text-4xl font-bold text-center py-8">{t('headline')}</h1>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-4 rounded-md border">
                   <input
@@ -88,7 +88,7 @@ export default function Upload() {
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
                     )}
-                    {uploading ? <div>Күтіңіз...</div> : <div>Жүктеу</div>}
+                    {uploading ? <div>{t('wait')}...</div> : <div>{t('upload')}</div>}
                   </button>
                   {message && <p>{message}</p>}
                   
@@ -103,7 +103,7 @@ export default function Upload() {
                 </>
               }
 
-              <h1 className="text-l font-bold" >Немесе <Link className="text-blue-500 underline" href="record">таспаға</Link> жаз</h1>
+              <h1 className="text-l font-bold" ><Link className="text-blue-500 underline" href="record">{t("or_record")}</Link></h1>
             </div>
           
             

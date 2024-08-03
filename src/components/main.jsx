@@ -1,13 +1,16 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import Fretboard from './fretboard/fretboard';  // Make sure to import the Fretboard component
+import Fretboard from './fretboard/fretboard';  
 import Link from 'next/link';
+import {useTranslations} from 'next-intl';
 
 const SongList = () => {
   const [songs, setSongs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSong, setSelectedSong] = useState(null);
   const [loading, setLoading] = useState(true)
+
+  const t = useTranslations('main');
 
   useEffect(() => {
     const fetchSongs = async () => {
@@ -47,7 +50,7 @@ const SongList = () => {
           
 
           
-          <div className='flex flex-col items-center font-bold text-3xl mb-5'>Танымал әндер</div>
+          <div className='flex flex-col items-center font-bold text-3xl mb-5'>{t('head')}</div>
           {loading && 
             <>
             <div className='flex flex-col items-center'>
@@ -78,7 +81,7 @@ const SongList = () => {
           </div>
           <div className='pt-10 flex flex-col items-center'>
             <Link href='search' >
-              <p className='text-gray-500 hover:text-blue-500'>Керек әуенді таппадыңыз ба? Онда AI көмегімен өзіңіз жасап көріңіз!</p>
+              <p className='text-gray-500 hover:text-blue-500'>{t('link')}</p>
             </Link>
             
 
@@ -90,7 +93,7 @@ const SongList = () => {
             onClick={() => setSelectedSong(null)}
             className="mb-4 text-white bg-black px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors duration-300"
           >
-            Артқа
+            {t("back")}
           </button>
           <div className="flex flex-col items-center text-2xl font-bold mb-2">{selectedSong.name}</div>
           <Fretboard data={(selectedSong.body)} />
